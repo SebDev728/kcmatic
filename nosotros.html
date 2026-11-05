@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KCMATIC S.A.C. - Contacto</title>
+  <link rel="icon" type="image/png" href="./img/assets/minilogo.jpg">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-dark': '#0B1B33',     // Fondo principal muy oscuro
+            'brand-blue': '#132A4A',     // Fondo de la caja de contacto
+            'brand-input': '#1A3356',    // Fondo de los inputs (un poco más claro)
+            'brand-yellow': '#FFB800',   // Amarillo de acento
+            'brand-text': '#94A3B8',     // Texto gris claro
+            'brand-social': '#00B4D8',   // Azul claro de los iconos sociales
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-brand-dark text-white font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
+
+  <!-- HERO SECTION & HEADER -->
+  <section class="relative h-[55vh] md:h-[65vh] flex flex-col justify-between">
+    <!-- Imagen de fondo con overlay oscuro -->
+    <div class="absolute inset-0 z-0">
+      <img src="./img/assets/banner.jpg" alt="Construction Workers" class="w-full h-full object-cover">
+      <!-- Overlay para oscurecer la imagen y hacer visible el texto -->
+      <div class="absolute inset-0 bg-black/60"></div>
+    </div>
+
+    <header class="relative top-0 w-full z-50 py-6 px-6 lg:px-12 flex justify-between items-center">
+      <a href="./index.html" class="flex  gap-2  bg-white rounded justify-center h-14 w-60 shadow-sm">
+        <img src="./img/assets/logo.jpg" alt="">
+      </a>
+
+      <nav class="hidden lg:flex gap-8 text-sm font-medium text-white">
+        <a href="./index.html" class="hover:text-brand-yellow transition">Inicio</a>
+        <a href="./products.html" class="hover:text-brand-yellow transition">Productos</a>
+        <a href="./nosotros.html" class="hover:text-brand-yellow transition">Nosotros</a>
+      </nav>
+
+      <div class="flex items-center gap-2 text-brand-yellow font-bold">
+        <i class="fa-solid fa-phone"></i>
+        <span>978 071 214 / 914 230 925</span>
+      </div>
+    </header>
+
+
+    <!-- Hero Content (Alineado a la izquierda y abajo) -->
+    <div class="relative z-10 px-6 lg:px-20 pb-20 md:pb-32 max-w-7xl mx-auto w-full">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 flex items-center gap-4">
+        <span class="w-1.5 h-10 bg-brand-yellow block"></span> Nosotros
+      </h1>
+      <p class="text-gray-300 text-base md:text-lg leading-relaxed max-w-2xl">
+        Si deseas solicitar una consulta, solicitar un producto o simplemente tienes alguna pregunta, ¡no dudes en
+        ponerte en contacto con nosotros!
+      </p>
+    </div>
+  </section>
+
+  <!-- ABOUT US SECTION -->
+  <section class="py-20 px-6 lg:px-20 grid lg:grid-cols-2 gap-16 items-center border-b border-gray-800">
+    <div class="relative">
+      <img src="img/assets/pneumatic.jpg" alt="nosotros" class="w-full h-[500px] object-cover">
+      <!-- Decoración cuadrada -->
+      <!-- <div class="absolute -bottom-6 -right-6 w-32 h-32 border-8 border-brand-yellow hidden lg:block"></div> -->
+    </div>
+
+    <div>
+      <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+        <span class="w-1 h-8 bg-brand-yellow"></span> Sobre Nosotros
+      </h2>
+      <p class="text-gray-400 mb-4 leading-relaxed">
+        Ubicados estratégicamente en el corazón del centro comercial
+        industrial de Lima (Av. Argentina 523, C.C. Acoprom, Int. E14), en KCMATIC S.A.C. (KC Matic S.A.C.)
+        proveemos
+        soluciones integrales para automatización industrial, control de fluidos y control de movimiento.</p>
+      <p class="text-gray-400 mb-8 leading-relaxed">
+        Nos enfocamos en ser el aliado estratégico de ingenieros, jefes
+        de mantenimiento y distribuidores, ofreciendo asesoría técnica personalizada y productos con
+        certificaciones
+        internacionales.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20 px-6 lg:px-20 max-w-7xl mx-auto  border-b border-gray-800">
+    <div class="flex justify-between items-end mb-10">
+      <div>
+        <h2 class="text-3xl font-bold mb-2 flex items-center gap-3">
+          <span class="w-1.5 h-8 bg-brand-yellow block"></span> Nuestros Servicios
+        </h2>
+        <p class="text-brand-text text-sm mt-2">Nuestras Soluciones e Infraestructura Neumática:
+        </p>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-4 gap-6">
+      <!-- Award 1 -->
+      <div class="bg-brand-blue p-8 border border-gray-800 hover:border-brand-yellow transition duration-300">
+        <i class="fa-solid fa-medal text-brand-yellow text-3xl mb-4"></i>
+        <h3 class="text-lg font-bold mb-4">Procesos Industriales</h3>
+        <p class="text-brand-text text-sm leading-relaxed">
+          Instrumentación fina para monitoreo y control de variables.</p>
+      </div>
+      <!-- Award 2 -->
+      <div class="bg-brand-blue p-8 border border-gray-800 hover:border-brand-yellow transition duration-300">
+        <i class="fa-solid fa-medal text-brand-yellow text-3xl mb-4"></i>
+        <h3 class="text-lg font-bold mb-4">Control de Fluidos</h3>
+        <p class="text-brand-text text-sm leading-relaxed">
+          Potencia y sellado de alta resistencia para líneas críticas.</p>
+      </div>
+      <div class="bg-brand-blue p-8 border border-gray-800 hover:border-brand-yellow transition duration-300">
+        <i class="fa-solid fa-medal text-brand-yellow text-3xl mb-4"></i>
+        <h3 class="text-lg font-bold mb-4">Automatización y Movimiento</h3>
+        <p class="text-brand-text text-sm leading-relaxed">Posicionamiento milimétrico para automatización.</p>
+      </div>
+      <!-- Award 3 -->
+      <div class="bg-brand-blue p-8 border border-gray-800 hover:border-brand-yellow transition duration-300">
+        <i class="fa-solid fa-medal text-brand-yellow text-3xl mb-4"></i>
+        <h3 class="text-lg font-bold mb-4">Ferreteria Industrial</h3>
+        <p class="text-brand-text text-sm leading-relaxed">
+          Suministros integrales y conexiones para talleres y plantas.</p>
+      </div>
+    </div>
+
+    <!-- Imagen de Banner con botón de Play -->
+    <!-- <div class="relative h-[400px] md:h-[500px] group cursor-pointer overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop"
+        alt="Construction Video" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+      <div class="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div
+          class="w-16 h-16 bg-brand-social rounded-full flex items-center justify-center text-white text-xl shadow-lg group-hover:scale-110 transition">
+          <i class="fa-solid fa-play ml-1"></i>
+        </div>
+      </div>
+    </div> -->
+  </section>
+
+
+  <!-- MAIN CONTENT (Info & Map) -->
+  <section class="flex-grow w-full max-w-7xl mx-auto px-6 lg:px-20 py-16 md:py-20">
+    <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+
+      <!-- Left: Contact Info Box -->
+      <div class="bg-brand-blue p-10 md:p-12 flex flex-col justify-center">
+
+        <!-- Address -->
+        <div class="mb-8">
+          <h3 class="text-2xl font-bold mb-3 text-white">Dirección</h3>
+          <p class="text-brand-text text-sm md:text-base">Av. Argentina 523, C.C. Acoprom, Int. E14, Cercado de Lima</p>
+        </div>
+
+        <!-- Phone -->
+        <div class="mb-8">
+          <h3 class="text-2xl font-bold mb-3 text-white">Teléfonos</h3>
+          <a href="tel:+12345678900" class="block text-brand-text text-sm md:text-base hover:text-white transition">+51
+            978 071 214</a>
+          <a href="" class="block text-brand-text text-sm md:text-base hover:text-white transition mt-1">+51 914 230
+            925</a>
+        </div>
+
+        <!-- E-mail -->
+        <div class="mb-10">
+          <h3 class="text-2xl font-bold mb-3 text-white">Despachos</h3>
+          <p class="block text-brand-text text-sm md:text-base ">Envíos diarios vía Shaloom, Marvisur, Flores u otra
+            agencia de tu preferencia.
+          </p>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="flex gap-3">
+          <a href="https://www.facebook.com/people/Kcmatic/61587955220671/#"
+            class="w-10 h-10 bg-brand-yellow rounded flex items-center justify-center text-brand-dark hover:bg-white transition">
+            <i class="fa-brands fa-facebook-f text-lg"></i>
+          </a>
+          <a href="https://wa.me/51978071214?text=Hola,%20deseo%20cotizar"
+            class="w-10 h-10 bg-brand-yellow rounded flex items-center justify-center text-brand-dark hover:bg-white transition">
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="bg-gray-100 min-h-[400px] w-full relative">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3708.924913482622!2d-77.04965920161824!3d-12.044054764302329!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c90043ec8e3b%3A0x8887ea26a8e11949!2sC%20C%20ACOPROM%20malvinas!5e1!3m2!1ses!2spe!4v1793284438700!5m2!1ses!2spe"
+          class="absolute inset-0 w-full h-full border-0" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="pt-16 pb-8 px-6 lg:px-20 border-t border-gray-800">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+
+      <!-- Col 1: Logo & Info -->
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="flex flex-col w-12">
+            <a href="./index.html" class="h-14 w-60 shadow-sm">
+              <img class="rounded" src=" ./img/assets/logo.jpg" alt="">
+            </a>
+          </div>
+        </div>
+        <p class="text-brand-text text-sm leading-relaxed mb-8 pr-4">
+          Empresa peruana dedicada a la automatización industrial, la neumática y el control de movimiento.
+        </p>
+        <div class="flex gap-3">
+          <a href="https://www.facebook.com/people/Kcmatic/61587955220671/#"
+            class="w-8 h-8 rounded-sm bg-brand-blue flex items-center justify-center text-white hover:bg-brand-yellow hover:text-brand-dark transition">
+            <i class="fa-brands fa-facebook-f text-sm"></i>
+          </a>
+          <a href="https://wa.me/51978071214?text=Hola,%20deseo%20cotizar"
+            class="w-8 h-8 rounded-sm bg-brand-blue flex items-center justify-center text-white hover:bg-brand-yellow hover:text-brand-dark transition">
+            <i class="fa-brands fa-whatsapp text-sm"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Company -->
+      <div>
+        <h4 class="text-white font-bold text-lg mb-6">Soluciones</h4>
+        <ul class="space-y-4 text-brand-text text-sm">
+          <li>Procesos Industriales</li>
+          <li>Control de Fluidos</li>
+          <li>>Posicionadores & Movimiento</li>
+          <li>Ferretería Industrial</li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Services -->
+      <div>
+        <h4 class="text-white font-bold text-lg mb-6">Atención al Cliente</h4>
+        <ul class="space-y-4 text-brand-text text-sm">
+          <li><a href="#" class="hover:text-brand-yellow transition">Av. Argentina 523, C.C. Acoprom, Int. E14</a></li>
+          <li><a href="#" class="hover:text-brand-yellow transition">Cercado de Lima, Perú</a></li>
+          <li><a href="#" class="hover:text-brand-yellow transition">Tel: 978 071 214 / 914 230 925</a></li>
+          <li><a href="#" class="hover:text-brand-yellow transition">Envíos a Nivel Nacional</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Newsletter -->
+      <div>
+        <h4 class="text-white font-bold text-lg mb-6">Cotizaciones Directas</h4>
+        <p class="text-brand-text text-sm mb-4">Atención inmediata por WhatsApp para empresas e ingenieros.</p>
+        <a href="https://wa.me/51978071214?text=Hola,%20deseo%20cotizar"
+          class="bg-brand-yellow text-brand-dark px-8 py-3 font-bold text-xs uppercase tracking-wider hover:bg-white transition">
+          iniciar Cotización
+        </a>
+      </div>
+
+    </div>
+  </footer>
+</body>
+
+</html>

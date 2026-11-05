@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KCMATIC S.A.C. - Productos</title>
+  <link rel="icon" type="image/png" href="./img/assets/minilogo.jpg">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-dark': '#0B1B33', // Color de fondo principal
+            'brand-blue': '#132A4A', // Azul para inputs
+            'brand-yellow': '#FFB800', // Amarillo de acento
+            'brand-text': '#94A3B8', // Color de texto gris claro
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-brand-dark text-white font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
+
+  <!-- HERO SECTION & HEADER -->
+  <section class="relative h-[55vh] md:h-[65vh] flex flex-col justify-between">
+    <div class="absolute inset-0 z-0">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGzPQJOi-BJ1GxZGtIvztEm-An-ql8jgphVkTCtdpGV7tsT9eYgI6HQcI&s=10"
+        alt="Productos" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black/60"></div>
+    </div>
+
+    <header class="relative top-0 w-full z-50 py-6 px-6 lg:px-12 flex justify-between items-center">
+      <a href="./index.html" class="flex  gap-2  bg-white rounded justify-center h-14 w-60 shadow-sm">
+        <img class="rounded" src=" ./img/assets/logo.jpg" alt="">
+      </a>
+
+      <nav class="hidden lg:flex gap-8 text-sm font-medium text-white">
+        <a href="./index.html" class="hover:text-brand-yellow transition">Inicio</a>
+        <a href="./products.html" class="hover:text-brand-yellow transition">Productos</a>
+        <a href="./nosotros.html" class="hover:text-brand-yellow transition">Nosotros</a>
+      </nav>
+
+      <div class="flex items-center gap-2 text-brand-yellow font-bold">
+        <i class="fa-solid fa-phone"></i>
+        <span>978 071 214 / 914 230 925</span>
+      </div>
+    </header>
+
+
+    <!-- Hero Content (Alineado a la izquierda y abajo) -->
+    <div class="relative z-10 px-6 lg:px-20 pb-20 md:pb-32 max-w-7xl mx-auto w-full">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 flex items-center gap-4">
+        <span class="w-1.5 h-10 bg-brand-yellow block"></span>Productos de Calidad
+      </h1>
+      <p class="text-gray-300 text-base md:text-lg leading-relaxed max-w-2xl">
+        Si deseas solicitar una consulta, solicitar un producto o simplemente tienes alguna pregunta, ¡no dudes en
+        ponerte en contacto con nosotros!
+      </p>
+    </div>
+  </section>
+
+
+  <!-- CTA BANNER -->
+  <div class="bg-brand-yellow py-8 px-6 lg:px-20 flex flex-col md:flex-row justify-between items-center">
+    <h3 class="text-brand-dark font-bold text-2xl mb-4 md:mb-0">Envíos a todo el Perú.</h3>
+    <a href="https://wa.me/51978071214?text=Hola,%20deseo%20cotizar"
+      class="bg-brand-dark text-white px-8 py-3 text-xs font-bold uppercase tracking-widest hover:bg-gray-800 transition">
+      Cotizar ahora
+    </a>
+  </div>
+  <!-- SECTORS OVERVIEW SECTION (VUE APP) -->
+  <!-- Nota: Se envuelve todo en el div con id="app" para que Vue tome el control -->
+  <section id="app" class="py-20 px-6 lg:px-20 max-w-7xl mx-auto bg-brand-dark">
+
+    <!-- Cabecera de la sección (Añadido el filtro opcional) -->
+    <div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
+      <div>
+        <h2 class="text-3xl font-bold mb-2 flex items-center gap-3 text-white">
+          <span class="w-1.5 h-8 bg-brand-yellow block"></span> Nuestros Productos
+        </h2>
+        <p class="text-brand-text text-sm mt-2">Filtra por categoría para conocer el catálogo completo de productos
+          disponibles en KCMATIC S.A.C.</p>
+      </div>
+
+      <!-- Filtros rápidos -->
+      <div class="flex gap-2 flex-wrap">
+        <button @click="filtroCategoria = 'todos'"
+          :class="{'bg-brand-yellow text-brand-dark': filtroCategoria === 'todos', 'bg-brand-blue text-white': filtroCategoria !== 'todos'}"
+          class="px-4 py-2 text-xs font-bold uppercase rounded transition">Todos</button>
+        <button @click="filtroCategoria = 'instrumentacion'"
+          :class="{'bg-brand-yellow text-brand-dark': filtroCategoria === 'instrumentacion', 'bg-brand-blue text-white': filtroCategoria !== 'instrumentacion'}"
+          class="px-4 py-2 text-xs font-bold uppercase rounded transition">Instrumentación</button>
+        <button @click="filtroCategoria = 'valvulas'"
+          :class="{'bg-brand-yellow text-brand-dark': filtroCategoria === 'valvulas', 'bg-brand-blue text-white': filtroCategoria !== 'valvulas'}"
+          class="px-4 py-2 text-xs font-bold uppercase rounded transition">Válvulas</button>
+        <button @click="filtroCategoria = 'neumatica'"
+          :class="{'bg-brand-yellow text-brand-dark': filtroCategoria === 'neumatica', 'bg-brand-blue text-white': filtroCategoria !== 'neumatica'}"
+          class="px-4 py-2 text-xs font-bold uppercase rounded transition">Neumática</button>
+      </div>
+    </div>
+
+    <!-- Grid de Productos con v-for -->
+    <!-- Se usa grid-cols-1 para móvil, 2 para tablet, 4 para escritorio -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- v-for recorre el arreglo computado y crea una tarjeta por cada producto -->
+      <!-- El atributo :key es esencial para que Vue optimice el renderizado -->
+      <div v-for="producto in productosFiltrados" :key="producto.id" class="group cursor-pointer flex flex-col">
+
+        <!-- Contenedor de la imagen -->
+        <div class="overflow-hidden mb-4 h-60 w-full bg-white rounded-md flex items-center justify-center ">
+          <!-- NOTA: Asumo que las imágenes están en la carpeta './img/products/' -->
+          <!-- Si las imágenes no cargan, se mostrará el texto alternativo con el nombre del producto -->
+          <img :src="'./img/products/' + producto.id + '.jpeg'" :alt="producto.nombre"
+            class="w-full  object-contain group-hover:scale-105 transition duration-500">
+        </div>
+
+        <!-- Marca (Pequeño texto arriba del nombre) -->
+        <span class="text-[10px] font-bold text-brand-yellow uppercase tracking-widest mb-1">{{ producto.marca }}</span>
+
+        <!-- Nombre del producto -->
+        <h3 class="font-bold text-lg mb-2 text-white line-clamp-2" :title="producto.nombre">{{ producto.nombre }}</h3>
+
+        <!-- Especificaciones (Mostramos las primeras 2 o 3 para no sobrecargar) -->
+        <ul class="text-brand-text text-xs mb-4 flex-grow list-disc list-inside space-y-1">
+          <!-- Usamos Object.entries para iterar sobre las propiedades del objeto especificaciones -->
+          <li v-for="(valor, clave) in producto.especificaciones" :key="clave" class="line-clamp-2">
+            <span class="capitalize">{{ clave }}:</span> {{ valor }}
+          </li>
+        </ul>
+
+        <!-- Botón de Leer más -->
+        <a :href="'https://wa.me/51978071214?text=Hola,%20deseo%20cotizar' + ' ' + producto.nombre"
+          class="bg-brand-yellow text-center text-brand-dark px-8 py-3 font-bold text-xs uppercase tracking-wider hover:bg-white transition">
+          Cotizar
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Mensaje si no hay productos en la categoría -->
+    <div v-if="productosFiltrados.length === 0" class="text-center text-brand-text py-10">
+      No se encontraron productos en esta categoría.
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="pt-16 pb-8 px-6 lg:px-20 border-t border-gray-800">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+
+      <!-- Col 1: Logo & Info -->
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="flex flex-col w-12">
+            <a href="./index.html" class="h-14 w-60 shadow-sm">
+              <img class="rounded" src=" ./img/assets/logo.jpg" alt="">
+            </a>
+          </div>
+        </div>
+        <p class="text-brand-text text-sm leading-relaxed mb-8 pr-4">
+          Empresa peruana dedicada a la automatización industrial, la neumática y el control de movimiento.
+        </p>
+        <div class="flex gap-3">
+          <a href="https://www.facebook.com/people/Kcmatic/61587955220671/#"
+            class="w-8 h-8 rounded-sm bg-brand-blue flex items-center justify-center text-white hover:bg-brand-yellow hover:text-brand-dark transition">
+            <i class="fa-brands fa-facebook-f text-sm"></i>
+          </a>
+          <a href="https://wa.me/51978071214?text=Hola,%20deseo%20cotizar"
+            class="w-8 h-8 rounded-sm bg-brand-blue flex items-center justify-center text-white hover:bg-brand-yellow hover:text-brand-dark transition">
+            <i class="fa-brands fa-whatsapp text-sm"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Company -->
+      <div>
+        <h4 class="text-white font-bold text-lg mb-6">Soluciones</h4>
+        <ul class="space-y-4 text-brand-text text-sm">
+          <li>Procesos Industriales</li>
+          <li>Control de Fluidos</li>
+          <li>>Posicionadores & Movimiento</li>
+          <li>Ferretería Industrial</li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Services -->
+      <div>
+        <h4 class="text-white font-bold text-lg mb-6">Atención al Cliente</h4>
+        <ul class="space-y-4 text-brand-text text-sm">
+          <li class="hover:text-brand-yellow transition">Av. Argentina 523, C.C. Acoprom, Int. E14</li>
+          <li class="hover:text-brand-yellow transition">Cercado de Lima, Perú</li>
+          <li class="hover:text-brand-yellow transition">Tel: 978 071 214 / 914 230 925</li>
+          <li class="hover:text-brand-yellow transition">Envíos a Nivel Nacional</li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Newsletter -->
+      <div>
+        <h4 class="text-white font-bold text-lg mb-6">Cotizaciones Directas</h4>
+        <p class="text-brand-text text-sm mb-4">Atención inmediata por WhatsApp para empresas e ingenieros.</p>
+        <a href="https://wa.me/51978071214?text=Hola,%20deseo%20cotizar"
+          class="bg-brand-yellow text-brand-dark px-8 py-3 font-bold text-xs uppercase tracking-wider hover:bg-white transition">
+          iniciar Cotización
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Vue.js CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="./js/products.js"></script>
+  <script>
+    const { createApp, ref, computed } = Vue;
+    createApp({
+      setup() {
+        // 1. Definimos el arreglo de productos completo
+        const productos = products;
+        const logos = Logos;
+        // 2. Estado para el filtro (opcional, para que la sección sea más útil)
+        const filtroCategoria = ref('todos');
+
+        // 3. Propiedad computada para filtrar los productos según la selección
+        const productosFiltrados = computed(() => {
+          if (filtroCategoria.value === 'todos') {
+            return productos;
+          }
+          return productos.filter(p => p.categoria === filtroCategoria.value);
+        });
+
+        return {
+          productos,
+          filtroCategoria,
+          productosFiltrados,
+          logos
+        }
+      }
+    }).mount('#app');
+  </script>
+
+</body>
+
+</html>

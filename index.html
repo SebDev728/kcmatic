@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KCMATIC S.A.C. - Inicio</title>
+  <link rel="icon" type="image/png" href="./img/assets/minilogo.jpg">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-dark': '#0B1B33', // Azul muy oscuro de fondo
+            'brand-blue': '#132A4A', // Azul un poco más claro para tarjetas
+            'brand-yellow': '#FFB800', // Amarillo mostaza
+            'brand-gray': '#F3F4F6',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Ajustes finos para el scrollbar y transiciones */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .hero-bg {
+      background-image: linear-gradient(to bottom, rgba(17, 30, 49, 0.7), rgba(11, 27, 51, 1)), url('./img/assets/banner.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* ESTILOS DE LA ANIMACIÓN (Se mantienen igual)*/
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .animate-scroll {
+      animation: scroll 30s linear infinite;
+    }
+
+    .animate-scroll:hover {
+      animation-play-state: paused;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body class="bg-brand-dark text-white font-sans antialiased overflow-x-hidden">
+  <!-- HEADER / NAVEGACIÓN -->
+  <header class="absolute top-0 w-full z-50 py-6 px-6 lg:px-12 flex justify-between items-center">
+    <div class="flex  gap-2  bg-white rounded justify-center h-14 w-60 shadow-sm">
+      <img src="./img/assets/logo.jpg" alt="">
+    </div>
+
+    <nav class="hidden lg:flex gap-8 text-sm font-medium text-white">
+      <a href="./index.html" class="hover:text-brand-yellow transition">Inicio</a>
+      <a href="./products.html" class="hover:text-brand-yellow transition">Productos</a>
+      <a href="./nosotros.html" class="hover:text-brand-yellow transition">Nosotros</a>
+    </nav>
+
+    <div class="flex items-center gap-2 text-brand-yellow font-bold">
+      <i class="fa-solid fa-phone"></i>
+      <span>978 071 214 / 914 230 925</span>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-bg h-screen flex items-center relative px-6 lg:px-20 pt-20">
+    <div class="max-w-2xl z-10">
+      <p class="mb-4 text-xs font-semibold uppercase tracking-[.3em]">impulsamos tu Camino</p>
+      <h1 class=" text-5xl lg:text-7xl font-extrabold leading-tight mb-6">
+        Soluciones de control de<br>Movimiento & Neumática<span class="text-brand-yellow">.</span>
+      </h1>
+      <div class="flex gap-4 mt-8">
+        <a href="https://wa.me/51978071214?text=Hola,%20deseo%20cotizar"
+          class="bg-brand-yellow text-brand-dark px-8 py-3 font-bold text-sm uppercase tracking-wider hover:bg-white transition">
+          Cotizar
+        </a>
+        <a href="./products.html"
+          class="border border-white/30 text-white px-8 py-3 font-bold text-sm uppercase tracking-wider hover:bg-white hover:text-brand-dark transition">
+          Ver Productos
+        </a>
+      </div>
+    </div>
+    <!-- Flechas de navegación decorativas -->
+    <!-- <div class="absolute bottom-10 right-10 flex gap-4">
+            <button
+                class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-brand-yellow hover:text-brand-dark transition"><i
+                    class="fa-solid fa-arrow-left"></i></button>
+            <button
+                class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-brand-yellow hover:text-brand-dark transition"><i
+                    class="fa-solid fa-arrow-right"></i></button>
+        </div> -->
+  </section>
+
+  <!-- LOGOS CAROUSEL (CINTA TRANSPORTADORA CON VUE) -->
+  <section id="app-logos" class="py-10 border-t border-b border-gray-800 bg-brand-dark overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-20 relative">
+      <!-- Contenedor animado -->
+      <div class="flex w-max animate-scroll hover:[animation-play-state:paused]">
+
+        <!-- Grupo 1 de Logos (Renderizado con v-for) -->
+        <div class="flex items-center gap-12 px-6">
+          <div v-for="(logo, index) in logos" :key="'grupo1-' + index"
+            class="bg-white rounded px-2 flex items-center justify-center h-20 w-40 shadow-sm">
+            <img :src="logo.src" :alt="logo.alt" class="max-h-full max-w-full object-contain">
+          </div>
+        </div>
+
+        <!-- Grupo 2 de Logos (Duplicado con v-for para el bucle infinito) -->
+        <!-- aria-hidden="true" oculta esta copia a los lectores de pantalla -->
+        <div class="flex items-center gap-12 px-6" aria-hidden="true">
+          <div v-for="(logo, index) in logos" :key="'grupo2-' + index"
+            class="bg-white rounded px-2 flex items-center justify-center h-20 w-40 shadow-sm">
+            <img :src="logo.src" :alt="logo.alt" class="max-h-full max-w-full object-contain">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ABOUT US SECTION -->
+  <section class="py-20 px-6 lg:px-20 grid lg:grid-cols-2 gap-16 items-center border-b border-gray-800">
+    <div class="relative">
+      <img src="./img/assets/pneumatic.jpg" alt="Engineer" class="w-full h-[500px] object-cover">
+      <!-- Decoración cuadrada -->
+      <!-- <div class="absolute -bottom-6 -right-6 w-32 h-32 border-8 border-brand-yellow hidden lg:block"></div> -->
+    </div>
+
+    <div>
+      <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+        <span class="w-1 h-8 bg-brand-yellow"></span> Sobre Nosotros
+      </h2>
+      <p class="text-gray-400 mb-4 leading-relaxed">
+        Ubicados estratégicamente en el corazón del centro comercial
+        industrial de Lima (Av. Argentina 523, C.C. Acoprom, Int. E14), en KCMATIC S.A.C. (KC Matic S.A.C.)
+        proveemos
+        soluciones integrales para automatización industrial, control de fluidos y control de movimiento.</p>
+      <p class="text-gray-400 mb-8 leading-relaxed">
+        Nos enfocamos en ser el aliado estratégico de ingenieros, jefes
+        de mantenimiento y distribuidores, ofreciendo asesoría técnica personalizada y productos con
+        certificaciones
+        internacionales.
+      </p>
+      <!-- 
+            <div class="flex gap-12 border-t border-gray-700 pt-8">
+                <div>
+                    <span class="block text-3xl font-bold text-brand-yellow">300+</span>
+                    <span class="text-sm text-gray-400">Satisfied clients</span>
+                </div>
+                <div>
+                    <span class="block text-3xl font-bold text-brand-yellow">60k+</span>
+                    <span class="text-sm text-gray-400">Sq Ft Built</span>
+                </div>
+                <div>
+                    <span class="block text-3xl font-bold text-brand-yellow">25</span>
+                    <span class="text-sm text-gray-400">Years on the market</span>
+                </div>
+            </div> -->
+    </div>
+  </section>
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- SECTORS OVERVIEW SECTION (CARRUSEL INFINITO) -->
+  <section class="border-b border-gray-800 py-20 px-6 lg:px-20 max-w-7xl mx-auto bg-brand-dark overflow-hidden ">
+    <div class="flex justify-between items-end mb-10">
+      <div>
+        <h2 class="text-3xl font-bold mb-2 flex items-center gap-3">
+          <span class="w-1.5 h-8 bg-brand-yellow block"></span> Nuestros Productos
+        </h2>
+        <p class="text-brand-text text-sm mt-2">Filtra por categoría para conocer el catálogo completo de productos
+          disponibles en KCMATIC S.A.C.</p>
+      </div>
+      <a href="./products.html"
+        class="hidden md:block text-brand-social text-xs font-bold uppercase tracking-widest hover:text-white transition text-brand-yellow">Todos
+        los Productos</a>
+    </div>
+
+    <div class="relative w-full">
+      <div class="swiper mySwiper !pb-4">
+        <div id="app" class="swiper-wrapper">
+          <div v-for="producto in productosFiltrados" :key="producto.id" class="swiper-slide group cursor-pointer">
+            <div class="overflow-hidden mb-4 h-60 w-full bg-white rounded-md flex items-center justify-center ">
+              <!-- NOTA: Asumo que las imágenes están en la carpeta './img/products/' -->
+              <!-- Si las imágenes no cargan, se mostrará el texto alternativo con el nombre del producto -->
+              <img :src="'./img/products/' + producto.id + '.jpeg'" :alt="producto.nombre"
+                class="w-full  object-contain group-hover:scale-105 transition duration-500">
+            </div>
+            <span class="text-[10px] font-bold text-brand-yellow uppercase tracking-widest mb-1">{{ producto.marca
+              }}</span>
+            <h3 class="font-bold text-lg mb-2 text-white line-clamp-1" :title="producto.nombre">{{ producto.nombre }}
+            </h3>
+            <ul class="text-brand-text text-xs mb-4 flex-grow list-disc list-inside space-y-1">
+              <!-- Usamos Object.entries para iterar sobre las propiedades del objeto especificaciones -->
+              <li v-for="(valor, clave) in producto.especificaciones" :key="clave" class="line-clamp-1">
+                <span class="capitalize">{{ clave }}:</span> {{ valor }}
+              </li>
+            </ul>
+            <a :href="'https://wa.me/51978071214?text=Hola,%20deseo%20cotizar' + ' ' + producto.nombre"
+              class="bg-brand-yellow text-center text-brand-dark px-8 py-3 font-bold text-xs uppercase tracking-wider hover:bg-white transition">
+              Cotizar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <button id="prevBtn"
+        class="absolute top-1/2 -left-10 md:-left-10 z-10 bg-brand-dark/80 backdrop-blur-sm text-white w-10 h-10 rounded-full flex items-center justify-center hover:text-brand-yellow hover:bg-brand-dark transition disabled:opacity-50">
+        <i class="fa-solid fa-chevron-left text-xl"></i>
+      </button>
+      <button id="nextBtn"
+        class="absolute top-1/2 -right-10 md:-right-10 z-10 bg-brand-dark/80 backdrop-blur-sm text-white w-10 h-10 rounded-full flex items-center justify-center hover:text-brand-yellow hover:bg-brand-dark transition disabled:opacity-50">
+        <i class="fa-solid fa-chevron-right text-xl"></i>
+      </button>
+    </div>
+  </section>
+
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Inicialización de Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 60, // Cuántas tarjetas se ven a la vez (por defecto 1 en móviles)
+      spaceBetween: 24, // Espacio entre tarjetas (equivale a gap-6 en Tailwind)
+      loop: true,       // Hace que el carrusel sea infinito
+
+      // Configuración de las flechas personalizadas
+      navigation: {
+        nextEl: "#nextBtn",
+        prevEl: "#prevBtn",
+      },
+
+      // Puntos de quiebre para responsividad
+      breakpoints: {
+        // Cuando el ancho de pantalla es >= 640px (sm)
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 24,
+        },
+        // Cuando el ancho de pantalla es >= 768px (md)
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 24,
+        },
+        // Cuando el ancho de pantalla es >= 1024px (lg)
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 24,
+        },
+      },
+    });
+  </script>
+
+
+  <!-- CTA BANNER -->
+  <div class="bg-brand-yellow py-8 px-6 lg:px-20 flex flex-col md:flex-row justify-between items-center">
+    <h3 class="text-brand-dark font-bold text-2xl mb-4 md:mb-0">
+      <i class="fa-solid fa-truck-fast text-brand-dark mr-1"></i>
+
+      Envíos a todo el Perú.
+
+    </h3>
+    <a href="https://wa.me/51978071214?text=Hola,%20deseo%20cotizar"
+      class="bg-brand-dark text-white px-8 py-3 text-xs font-bold uppercase tracking-widest hover:bg-gray-800 transition">
+      Cotizar ahora
+    </a>
+  </div>
+
+  <!-- QUALITY / GALLERY SECTION -->
+  <section class="py-16 px-6  lg:px-20 text-center ">
+    <h2 class="text-3xl font-bold mb-2">Nuestro principal objetivo es ofrecer la <br> Mejor Calidad</h2>
+    <p class="text-gray-400 text-sm mb-12">We work hard to finish every project on schedule.</p>
+
+    <div class="grid auto-rows-[130px] grid-cols-2 gap-3 sm:auto-rows-[170px] sm:grid-cols-3">
+      <img class="h-full w-full object-cover" src="./img/assets/pneumatic1.jpg">
+      <img class="row-span-2 h-full w-full object-cover" src="img/assets/pneumatic.jpg">
+      <img class="h-full w-full object-cover" src="./img/assets/pneumatic3.jpg">
+      <img class="row-span-2 h-full w-full object-cover" src="./img/assets/medidor.jpg">
+      <img class="h-full w-full object-cover" src="./img/assets/banner.jpg">
+      <img class="h-full w-full object-cover" src="./img/assets/pneumatic4.jpg">
+      <img class="h-full w-full object-cover" src="./img/assets/pneumatic2.jpg">
+    </div>
+  </section>
+
+
+
+  <!-- CONTACT CTA -->
+  <!-- 
+  <section class="bg-brand-yellow py-20 px-6 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-8 max-w-2xl mx-auto leading-tight">
+      Contact Us to Specify Your Next Project Details Right Now!
+    </h2>
+    <button
+      class="bg-brand-dark text-white px-10 py-4 text-xs font-bold uppercase tracking-widest hover:bg-gray-800 transition">
+      Request a Quote
+    </button>
+  </section> -->
+
+
+
+  <!-- SERVICES SECTION -->
+  <!-- <section class="py-20 px-6 lg:px-20 bg-brand-dark">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <h2 class="text-3xl font-bold mb-2 flex items-center gap-3">
+                    <span class="w-1 h-8 bg-brand-yellow"></span> We deliver the Best Services in Different Sectors
+                </h2>
+                <p class="text-gray-400 text-sm mt-2">Our team provides expert services in different fields of
+                    construction.</p>
+            </div>
+            <a href="#"
+                class="hidden md:block text-brand-yellow text-xs font-bold uppercase tracking-widest hover:underline">View
+                All Services</a>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <div
+                class="bg-brand-blue p-8 hover:bg-gray-800 transition duration-300 group cursor-pointer border border-transparent hover:border-brand-yellow">
+                <i class="fa-regular fa-building text-4xl text-brand-yellow mb-6 group-hover:scale-110 transition"></i>
+                <h3 class="text-xl font-bold mb-2">Commercial</h3>
+                <p class="text-sm text-gray-400 mb-6">We perform high-quality commercial projects of any complexity.</p>
+                <span
+                    class="text-xs font-bold uppercase text-brand-yellow group-hover:translate-x-2 transition block">Learn
+                    more &rarr;</span>
+            </div>
+            <div
+                class="bg-brand-blue p-8 hover:bg-gray-800 transition duration-300 group cursor-pointer border border-transparent hover:border-brand-yellow">
+                <i
+                    class="fa-solid fa-house-chimney text-4xl text-brand-yellow mb-6 group-hover:scale-110 transition"></i>
+                <h3 class="text-xl font-bold mb-2">Residential</h3>
+                <p class="text-sm text-gray-400 mb-6">We are proud to build dream houses for our customers.</p>
+                <span
+                    class="text-xs font-bold uppercase text-brand-yellow group-hover:translate-x-2 transition block">Learn
+                    more &rarr;</span>
+            </div>
+            <div
+                class="bg-brand-blue p-8 hover:bg-gray-800 transition duration-300 group cursor-pointer border border-transparent hover:border-brand-yellow">
+                <i class="fa-solid fa-couch text-4xl text-brand-yellow mb-6 group-hover:scale-110 transition"></i>
+                <h3 class="text-xl font-bold mb-2">Interiors</h3>
+                <p class="text-sm text-gray-400 mb-6">Need a unique interior design? We can help with any idea.</p>
+                <span
+                    class="text-xs font-bold uppercase text-brand-yellow group-hover:translate-x-2 transition block">Learn
+                    more &rarr;</span>
+            </div>
+        </div>
+    </section> -->
+
+  <!-- PROJECTS SECTION -->
+  <!-- <section class="py-20 px-6 lg:px-20">
+        <div class="flex justify-between items-end mb-10">
+            <h2 class="text-3xl font-bold flex items-center gap-3">
+                <span class="w-1 h-8 bg-brand-yellow"></span> We Are Very Proud to Present You Our Latest Projects.
+            </h2>
+            <a href="#"
+                class="hidden md:block text-brand-yellow text-xs font-bold uppercase tracking-widest hover:underline">All
+                Projects</a>
+        </div>
+        <p class="text-gray-400 mb-12">Together we build our future we live in.</p>
+
+        <div class="grid md:grid-cols-2 gap-8 relative">
+            <div class="group cursor-pointer">
+                <div class="overflow-hidden mb-4 relative">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=2070&auto=format&fit=crop"
+                        class="w-full h-80 object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h4 class="font-bold text-lg">Neel Complex</h4>
+                        <p class="text-xs text-brand-yellow uppercase mt-1">Residential</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-500 mt-2">With 350 apartments, the residential complex includes 2 blocks,
+                    19-floor houses, and 3 football grounds.</p>
+            </div>
+            <div class="group cursor-pointer">
+                <div class="overflow-hidden mb-4 relative">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+                        class="w-full h-80 object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h4 class="font-bold text-lg">George Center</h4>
+                        <p class="text-xs text-brand-yellow uppercase mt-1">Commercial</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-500 mt-2">We have erected the whole shopping center. It looks futuristic and
+                    blends with the urban architecture of Chicago.</p>
+            </div>
+            <button
+                class="absolute top-1/2 -right-4 bg-white text-brand-dark w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-brand-yellow transition hidden lg:flex">
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </section> -->
+
+  <!-- SERVICES DETAIL / BANNER -->
+  <!-- <section class="grid lg:grid-cols-2 bg-brand-blue">
+        <div class="h-[600px]">
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop"
+                alt="Worker" class="w-full h-full object-cover">
+        </div>
+        <div class="p-12 lg:p-20 flex flex-col justify-center">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-1 h-8 bg-brand-yellow"></span> We Offer All Kinds of Construction Services
+            </h2>
+            <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                Whatever your task is, we can implement it delivering the highest quality possible.
+            </p>
+            <p class="text-gray-400 mb-8 text-sm leading-relaxed">
+                Due to our extensive experience in different fields and a professional team of engineers, constructors,
+                and designers, we can implement your project of any complexity in the following areas:
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-8 text-sm text-gray-300 mb-10">
+                <div class="flex items-center gap-2"><span class="w-1 h-1 bg-brand-yellow rounded-full"></span> Design &
+                    Build</div>
+                <div class="flex items-center gap-2"><span class="w-1 h-1 bg-brand-yellow rounded-full"></span> Project
+                    Management</div>
+                <div class="flex items-center gap-2"><span class="w-1 h-1 bg-brand-yellow rounded-full"></span>
+                    Renovation</div>
+                <div class="flex items-center gap-2"><span class="w-1 h-1 bg-brand-yellow rounded-full"></span>
+                    Construction</div>
+                <div class="flex items-center gap-2"><span class="w-1 h-1 bg-brand-yellow rounded-full"></span> Interior
+                    Design</div>
+                <div class="flex items-center gap-2"><span class="w-1 h-1 bg-brand-yellow rounded-full"></span> Design
+                    Projects</div>
+                <div class="flex items-center gap-2"><span class="w-1 h-1 bg-brand-yellow rounded-full"></span>
+                    Preconstruction</div>
+                <div class="flex items-center gap-2"><span class="w-1 h-1 bg-brand-yellow rounded-full"></span>
+                    Additional Services</div>
+            </div>
+
+            <button
+                class="bg-brand-yellow text-brand-dark w-40 py-3 font-bold text-xs uppercase tracking-wider hover:bg-white transition">
+                Learn More
+            </button>
+        </div>
+    </section> -->
+
+
+
+
+  <!-- IMAGE FULL WIDTH SECTION -->
+  <!-- <section class="relative h-[600px]">
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop"
+            class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="absolute bottom-10 left-10 lg:left-20 flex items-center gap-4">
+            <div
+                class="w-16 h-16 bg-brand-yellow rounded-full flex items-center justify-center text-brand-dark text-xl">
+                <i class="fa-solid fa-play"></i>
+            </div>
+            <div class="text-white">
+                <span class="block text-xs font-bold uppercase tracking-widest">Watch our video</span>
+                <span class="text-[10px] text-gray-300">Learn more</span>
+            </div>
+        </div>
+    </section> -->
+
+
+  <!-- BLOG SECTION -->
+  <!-- <section class="py-20 px-6 lg:px-20 grid lg:grid-cols-2 gap-16">
+        <div>
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-1 h-8 bg-brand-yellow"></span> Learn More About the Construction Industry
+            </h2>
+            <p class="text-gray-400 mb-10">Welcome to our blog with interesting and helpful articles.</p>
+
+            <div class="space-y-8">
+                <div class="flex gap-6 group cursor-pointer">
+                    <div class="w-32 h-32 flex-shrink-0 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+                            class="w-full h-full object-cover group-hover:scale-110 transition">
+                    </div>
+                    <div>
+                        <span class="text-xs text-gray-500 uppercase">May 15, 2024</span>
+                        <h3 class="text-lg font-bold mt-1 group-hover:text-brand-yellow transition">Modern Architecture
+                            in Big Cities.</h3>
+                        <p class="text-sm text-gray-400 mt-2 line-clamp-2">Have you ever wondered how to perceive the
+                            city and what effect the architecture you see has on that? Architecture styles and
+                            approaches really mean a lot.</p>
+                    </div>
+                </div>
+                <div class="flex gap-6 group cursor-pointer">
+                    <div class="w-32 h-32 flex-shrink-0 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop"
+                            class="w-full h-full object-cover group-hover:scale-110 transition">
+                    </div>
+                    <div>
+                        <span class="text-xs text-gray-500 uppercase">May 10, 2024</span>
+                        <h3 class="text-lg font-bold mt-1 group-hover:text-brand-yellow transition">First Professional
+                            Blog on Construction.</h3>
+                        <p class="text-sm text-gray-400 mt-2 line-clamp-2">If you are interested in the area of
+                            construction and architecture or work in a construction-related business, we are waiting for
+                            you in our professional blog.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative h-full min-h-[400px]">
+            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop"
+                class="w-full h-full object-cover">
+        </div>
+    </section> -->
+
+  <!-- TESTIMONIALS -->
+  <!-- <section class="py-20 px-6 lg:px-20 grid md:grid-cols-2 gap-8">
+        <div class="bg-brand-blue p-8 relative">
+            <i class="fa-solid fa-quote-left text-4xl text-brand-yellow mb-4 opacity-50"></i>
+            <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                "You have been cooperating with this company for a long time and would like to express my gratitude to
+                the team of real professionals. For 10 years of cooperation, we have never encountered a violation of
+                agreements."
+            </p>
+            <div class="flex items-center gap-3">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" class="w-10 h-10 rounded-full">
+                <div>
+                    <h4 class="font-bold text-sm">Jessica Peterson</h4>
+                    <p class="text-[10px] text-gray-500">December 15, 2024</p>
+                </div>
+            </div>
+        </div>
+        <div class="bg-brand-blue p-8 relative">
+            <i class="fa-solid fa-quote-left text-4xl text-brand-yellow mb-4 opacity-50"></i>
+            <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                "Thanks to Great House, we have moved to our new home! All stages of construction were handled promptly,
+                and all our wishes were taken into account. Great House specialists have never let us down!"
+            </p>
+            <div class="flex items-center gap-3">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full">
+                <div>
+                    <h4 class="font-bold text-sm">Daniel Williams</h4>
+                    <p class="text-[10px] text-gray-500">March 18, 2024</p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+
+  <!-- LOGOS CAROUSEL (CINTA TRANSPORTADORA CON VUE) -->
+  <section id="app-logos2" class="py-10 border-t border-b border-gray-800 bg-brand-dark overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-20 relative">
+      <!-- Contenedor animado -->
+      <div class="flex w-max animate-scroll hover:[animation-play-state:paused]">
+
+        <!-- Grupo 1 de Logos (Renderizado con v-for) -->
+        <div class="flex items-center gap-12 px-6">
+          <div v-for="(logo, index) in logos" :key="'grupo1-' + index"
+            class="bg-white rounded px-2 flex items-center justify-center h-20 w-40 shadow-sm">
+
+            <img :src="logo.src" :alt="logo.alt" class="max-h-full max-w-full object-contain">
+          </div>
+        </div>
+
+        <!-- Grupo 2 de Logos (Duplicado con v-for para el bucle infinito) -->
+        <!-- aria-hidden="true" oculta esta copia a los lectores de pantalla -->
+        <div class="flex items-center gap-12 px-6" aria-hidden="true">
+          <div v-for="(logo, index) in logos" :key="'grupo2-' + index"
+            class="bg-white rounded px-2 flex items-center justify-center h-20 w-40 shadow-sm">
+            <img :src="logo.src" :alt="logo.alt" class="max-h-full max-w-full object-contain">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Big Phone Number -->
+  <div class="text-center pt-20">
+    <p href="tel:+12345678900" class="text-4xl md:text-5xl font-bold text-brand-yellow hover:text-white transition">
+      Contáctanos</p>
+  </div>
+
+  <!-- MAIN CONTENT (Info & Map) -->
+  <section class="flex-grow w-full max-w-7xl mx-auto px-6 lg:px-20 py-16 md:py-20">
+    <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+
+      <!-- Left: Contact Info Box -->
+      <div class="bg-brand-blue p-10 md:p-12 flex flex-col justify-center">
+
+        <!-- Address -->
+        <div class="mb-8">
+          <h3 class="text-2xl font-bold mb-3 text-white">Dirección</h3>
+          <p class="text-brand-text text-sm md:text-base">Av. Argentina 523, C.C. Acoprom, Int. E14, Cercado de Lima</p>
+        </div>
+
+        <!-- Phone -->
+        <div class="mb-8">
+          <h3 class="text-2xl font-bold mb-3 text-white">Teléfonos</h3>
+          <a href="tel:+12345678900" class="block text-brand-text text-sm md:text-base hover:text-white transition">+51
+            978 071 214</a>
+          <a href="" class="block text-brand-text text-sm md:text-base hover:text-white transition mt-1">+51 914 230
+            925</a>
+        </div>
+
+        <!-- E-mail -->
+        <div class="mb-10">
+          <h3 class="text-2xl font-bold mb-3 text-white">Despachos</h3>
+          <p class="block text-brand-text text-sm md:text-base ">Envíos diarios vía Shaloom, Marvisur, Flores u otra
+            agencia de tu preferencia.
+          </p>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="flex gap-3">
+          <a href="https://www.facebook.com/people/Kcmatic/61587955220671/#"
+            class="w-10 h-10 bg-brand-yellow rounded flex items-center justify-center text-brand-dark hover:bg-white transition">
+            <i class="fa-brands fa-facebook-f text-lg"></i>
+          </a>
+          <a href="https://wa.me/51978071214?text=Hola,%20deseo%20cotizar"
+            class="w-10 h-10 bg-brand-yellow rounded flex items-center justify-center text-brand-dark hover:bg-white transition">
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="bg-gray-100 min-h-[400px] w-full relative">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3708.924913482622!2d-77.04965920161824!3d-12.044054764302329!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c90043ec8e3b%3A0x8887ea26a8e11949!2sC%20C%20ACOPROM%20malvinas!5e1!3m2!1ses!2spe!4v1793284438700!5m2!1ses!2spe"
+          class="absolute inset-0 w-full h-full border-0" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+    </div>
+  </section>
+
+  <div id="whatsapp-widget">
+    <!-- 1. VENTANA DEL CHAT (MODAL) -->
+    <!-- Se muestra/oculta con la clase 'hidden' controlada por Vue -->
+    <div v-show="isOpen"
+      class="fixed bottom-24 right-6 z-50 w-[350px] max-w-[calc(100vw-3rem)] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col transition-all duration-300"
+      :class="isOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95 pointer-events-none'">
+      <!-- Encabezado del Chat -->
+      <div class="bg-[#075E54] p-4 flex items-center gap-3">
+        <div class="relative">
+          <img src="./img/assets/minilogo.jpg" class="w-12 h-12 rounded-full border-2 border-white object-cover">
+          <!-- Puntito verde de "En línea" -->
+          <span
+            class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-[#075E54] rounded-full"></span>
+        </div>
+        <div class="flex-grow">
+          <h3 class="text-white font-bold text-sm leading-tight">KCMATIC S.A.C. Support</h3>
+          <p class="text-green-100 text-[11px]">Normalmente responde en minutos</p>
+        </div>
+        <!-- Botón de cerrar -->
+        <button @click="toggleChat" class="text-white/80 hover:text-white transition">
+          <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+      </div>
+
+      <!-- Cuerpo del Chat (Lista de contactos) -->
+      <div class="p-4 flex-grow bg-[#ECE5DD] max-h-[350px] overflow-y-auto">
+        <!-- Mensaje de bienvenida -->
+        <div class="bg-white p-3 rounded-lg rounded-tl-none shadow-sm mb-6 text-sm text-gray-700 relative">
+          <span class="absolute -left-2 top-0 w-0 h-0 border-t-8 border-t-white border-r-8 border-r-transparent"></span>
+          ¡Hola! 👋 ¿En qué podemos ayudarte? Selecciona un asesor para iniciar el chat.
+        </div>
+
+        <!-- Lista de Contactos con v-for -->
+        <div class="space-y-3">
+          <button v-for="contacto in contactos" :key="contacto.id" @click="abrirWhatsApp(contacto)"
+            class="w-full bg-white p-3 rounded-lg shadow-sm flex items-center gap-3 hover:bg-gray-50 transition border border-transparent hover:border-green-500 group">
+            <!-- Foto del asesor -->
+            <div class="relative flex-shrink-0">
+              <img src="./img/assets/minilogo.jpg" :alt="contacto.nombre" class="w-10 h-10 rounded-full object-cover">
+              <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
+            </div>
+            <!-- Info del asesor -->
+            <div class="flex-grow text-left">
+              <h4 class="text-gray-800 font-bold text-sm group-hover:text-green-600 transition">KCMATIC S.A.C.
+              </h4>
+              <p class="text-gray-500 text-xs">{{ contacto.rol }}</p>
+            </div>
+            <!-- Icono de WhatsApp -->
+            <i class="fa-brands fa-whatsapp text-green-500 text-xl opacity-50 group-hover:opacity-100 transition"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Pie del Chat -->
+      <div class="bg-gray-100 p-3 text-center border-t border-gray-200">
+        <p class="text-[10px] text-gray-500">Powered by <strong>Great House</strong></p>
+      </div>
+    </div>
+
+    <!-- 2. BOTÓN FLOTANTE (El que mejoramos antes) -->
+    <button @click="toggleChat" aria-label="Abrir chat de WhatsApp"
+      class="group fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full shadow-[0_4px_14px_0_rgba(37,211,102,0.39)] transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none">
+      <!-- Efecto de pulso (solo si el chat está cerrado) -->
+      <span v-show="!isOpen"
+        class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75 animate-ping -z-10"></span>
+
+      <!-- Icono de WhatsApp (se oculta cuando está abierto) -->
+      <svg v-show="!isOpen" class="w-8 h-8 md:w-9 md:h-9 fill-current" viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+      </svg>
+
+      <!-- Icono de flecha hacia abajo (se muestra cuando está abierto) -->
+      <i v-show="isOpen" class="fa-solid fa-chevron-down text-2xl"></i>
+
+      <!-- Tooltip -->
+      <span v-show="!isOpen"
+        class="absolute right-full mr-4 top-1/2 -translate-y-1/2 whitespace-nowrap bg-gray-900 text-white text-xs font-semibold px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none hidden md:block">
+        ¿Necesitas ayuda?
+        <span class="absolute left-full top-1/2 -translate-y-1/2 border-4 border-transparent border-l-gray-900"></span>
+      </span>
+    </button>
+
+  </div>
+
+  <!-- 3. SCRIPT DE VUE -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp, ref, computed } = Vue;
+
+    createApp({
+      setup() {
+        // Estado para abrir/cerrar el modal
+        const isOpen = ref(false);
+
+        // Lista de contactos (puedes agregar los que quieras)
+        const contactos = ref([
+          {
+            id: 1,
+            nombre: "Carlos Mendoza",
+            rol: "Telefono 1",
+            telefono: "51978071214", // Código de país + número (sin +)
+            foto: "./img/logo.jpg"
+
+          },
+          {
+            id: 2,
+            nombre: "Ana Gómez",
+            rol: "Telefono 2",
+            telefono: "51914230925",
+            foto: "./img/logo.jpg"
+          }
+        ]);
+
+        // Función para abrir/cerrar el chat
+        const toggleChat = () => {
+          isOpen.value = !isOpen.value;
+        };
+
+        // Función para redirigir a WhatsApp
+        const abrirWhatsApp = (contacto) => {
+          // Mensaje predefinido (opcional)
+          const mensaje = encodeURIComponent(`Hola KCMATIC S.A.C., quisiera solicitar asesoría y cotización sobre....`);
+          const url = `https://wa.me/${contacto.telefono}?text=${mensaje}`;
+          window.open(url, '_blank');
+        };
+
+        return {
+          isOpen,
+          contactos,
+          toggleChat,
+          abrirWhatsApp
+        };
+      }
+    }).mount('#whatsapp-widget');
+
+    createApp({
+      setup() {
+        // Estado para abrir/cerrar el modal
+        const isOpen = ref(false);
+
+        // Arreglo de contactos. 
+        // IMPORTANTE: Reemplaza los números por los reales (Código de país + número, sin el +)
+        const contactos = ref([
+          {
+            id: 1,
+            inicial: "V",
+            nombre: "Ventas",
+            descripcion: "Cotizaciones, productos y disponibilidad.",
+            numero: "5215512345678", // Ejemplo México
+            numeroFormateado: "+52 55 1234 5678",
+            mensaje: "Hola, me gustaría solicitar una cotización de productos."
+          },
+          {
+            id: 2,
+            inicial: "S",
+            nombre: "Soporte Técnico",
+            descripcion: "Ayuda con instalación y funcionamiento.",
+            numero: "5215587654321",
+            numeroFormateado: "+52 55 8765 4321",
+            mensaje: "Hola, necesito asistencia técnica con un equipo."
+          },
+          {
+            id: 3,
+            inicial: "A",
+            nombre: "Atención a Clientes",
+            descripcion: "Seguimiento de pedidos y post-venta.",
+            numero: "5215511223344",
+            numeroFormateado: "+52 55 1122 3344",
+            mensaje: "Hola, quisiera consultar el estado de mi pedido."
+          },
+          {
+            id: 4,
+            inicial: "F",
+            nombre: "Facturación",
+            descripcion: "Dudas sobre facturas y pagos.",
+            numero: "5215544556677",
+            numeroFormateado: "+52 55 4455 6677",
+            mensaje: "Hola, necesito ayuda con la facturación de mi compra."
+          }
+        ]);
+
+        return {
+          isOpen,
+          contactos
+        };
+      }
+    }).mount('#app-whatsapp-widget');
+  </script>
+
+  <!-- Estilos personalizados para la barra de scroll del modal -->
+  <style>
+    /* Scrollbar elegante para el modal */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background-color: #374151;
+      /* gray-700 */
+      border-radius: 20px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background-color: #4B5563;
+      /* gray-600 */
+    }
+  </style>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="pt-16 pb-8 px-6 lg:px-20 border-t border-gray-800">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+      <!-- Col 1: Logo & Info -->
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="flex flex-col w-12">
+            <a href="./index.html" class="h-14 w-60 shadow-sm">
+              <img class="rounded" src=" ./img/assets/logo.jpg" alt="">
+            </a>
+          </div>
+        </div>
+        <p class="text-brand-text text-sm leading-relaxed mb-8 pr-4">
+          Empresa peruana dedicada a la automatización industrial, la neumática y el control de movimiento.
+        </p>
+        <div class="flex gap-3">
+          <a href="https://www.facebook.com/people/Kcmatic/61587955220671/#"
+            class="w-8 h-8 rounded-sm bg-brand-blue flex items-center justify-center text-white hover:bg-brand-yellow hover:text-brand-dark transition">
+            <i class="fa-brands fa-facebook-f text-sm"></i>
+          </a>
+          <a href="https://wa.me/51978071214?text=Hola,%20deseo%20cotizar"
+            class="w-8 h-8 rounded-sm bg-brand-blue flex items-center justify-center text-white hover:bg-brand-yellow hover:text-brand-dark transition">
+            <i class="fa-brands fa-whatsapp text-sm"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Company -->
+      <div>
+        <h4 class="text-white font-bold text-lg mb-6">Soluciones</h4>
+        <ul class="space-y-4 text-brand-text text-sm">
+          <li>Procesos Industriales</li>
+          <li>Control de Fluidos</li>
+          <li>>Posicionadores & Movimiento</li>
+          <li>Ferretería Industrial</li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Services -->
+      <div>
+        <h4 class="text-white font-bold text-lg mb-6">Atención al Cliente</h4>
+        <ul class="space-y-4 text-brand-text text-sm">
+          <li><a href="#" class="hover:text-brand-yellow transition">Av. Argentina 523, C.C. Acoprom, Int. E14</a></li>
+          <li><a href="#" class="hover:text-brand-yellow transition">Cercado de Lima, Perú</a></li>
+          <li><a href="#" class="hover:text-brand-yellow transition">Tel: 978 071 214 / 914 230 925</a></li>
+          <li><a href="#" class="hover:text-brand-yellow transition">Envíos a Nivel Nacional</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Newsletter -->
+      <div>
+        <h4 class="text-white font-bold text-lg mb-6">Cotizaciones Directas</h4>
+        <p class="text-brand-text text-sm mb-4">Atención inmediata por WhatsApp para empresas e ingenieros.</p>
+        <a href="https://wa.me/51978071214?text=Hola,%20deseo%20cotizar"
+          class="bg-brand-yellow text-brand-dark px-8 py-3 font-bold text-xs uppercase tracking-wider hover:bg-white transition">
+          iniciar Cotización
+        </a>
+      </div>
+
+    </div>
+  </footer>
+</body>
+
+<!-- Vue.js CDN -->
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="./js/products.js"></script>
+<script>
+
+  createApp({
+    setup() {
+      // 1. Definimos el arreglo de productos completo
+      const productos = products;
+      // 2. Estado para el filtro (opcional, para que la sección sea más útil)
+      const filtroCategoria = ref('todos');
+
+      // 3. Propiedad computada para filtrar los productos según la selección
+      const productosFiltrados = computed(() => {
+        if (filtroCategoria.value === 'todos') {
+          return productos;
+        }
+        return productos.filter(p => p.categoria === filtroCategoria.value);
+      });
+
+      return {
+        productos,
+        filtroCategoria,
+        productosFiltrados,
+      }
+    }
+  }).mount('#app');
+
+  createApp({
+    setup() {
+      // Arreglo con las rutas y los textos alternativos de los logos
+      const logos = ref(Logos);
+
+      return {
+        logos
+      }
+    }
+  }).mount('#app-logos');
+
+  createApp({
+    setup() {
+      // Arreglo con las rutas y los textos alternativos de los logos
+      const logos = ref(Logos);
+      return {
+        logos
+      }
+    }
+  }).mount('#app-logos2');
+</script>
+
+</script>
+
+</html>
