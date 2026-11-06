@@ -33,9 +33,33 @@
 </head>
 
 <body class="bg-brand-dark text-white font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
-
+  <header class="absolute top-0 w-full z-50 py-6 px-6 lg:px-12 ">
+    <div class="flex justify-between items-center">
+      <img class="flex gap-2 bg-white rounded justify-center h-14 w-60 shadow-sm" src="./img/assets/logo.jpg" alt="">
+      <nav class="hidden lg:flex items-center gap-7 font-medium text-sm">
+        <a class="hover:text-amber" href="./index.html">Inicio</a>
+        <a class="hover:text-amber" href="./nosotros.html">Nosotros</a>
+        <a class="hover:text-amber" href="./products.html">Productos</a>
+      </nav>
+      <div class="hidden md:flex  items-center gap-2 text-brand-yellow font-bold">
+        <i class="fa-solid fa-phone"></i>
+        <span>978 071 214 / 914 230 925</span>
+      </div>
+      <button id="mobileMenuBtn" class="lg:hidden p-2  hover:text-industrial-navy">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <!-- MOBILE NAV -->
+    <div id="mobileMenu" class="hidden bg-brand-blue lg:hidden border-b border-slate-200 px-6 py-4 space-y-3">
+      <a class="hover:text-amber block py-2 font-semibold" href="./index.html">Inicio</a>
+      <a class="hover:text-amber block py-2  font-semibold" href="./nosotros.html">Nosotros</a>
+      <a class="hover:text-amber block py-2  font-semibold" href="./products.html">Productos</a>
+    </div>
+  </header>
   <!-- HERO SECTION & HEADER -->
-  <section class="relative h-[55vh] md:h-[65vh] flex flex-col justify-between">
+  <section class="relative h-[55vh] md:h-[65vh] flex flex-col justify-between pt-40">
     <div class="absolute inset-0 z-0">
       <img
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGzPQJOi-BJ1GxZGtIvztEm-An-ql8jgphVkTCtdpGV7tsT9eYgI6HQcI&s=10"
@@ -43,22 +67,7 @@
       <div class="absolute inset-0 bg-black/60"></div>
     </div>
 
-    <header class="relative top-0 w-full z-50 py-6 px-6 lg:px-12 flex justify-between items-center">
-      <a href="./index.html" class="flex  gap-2  bg-white rounded justify-center h-14 w-60 shadow-sm">
-        <img class="rounded" src=" ./img/assets/logo.jpg" alt="">
-      </a>
 
-      <nav class="hidden lg:flex gap-8 text-sm font-medium text-white">
-        <a href="./index.html" class="hover:text-brand-yellow transition">Inicio</a>
-        <a href="./products.html" class="hover:text-brand-yellow transition">Productos</a>
-        <a href="./nosotros.html" class="hover:text-brand-yellow transition">Nosotros</a>
-      </nav>
-
-      <div class="flex items-center gap-2 text-brand-yellow font-bold">
-        <i class="fa-solid fa-phone"></i>
-        <span>978 071 214 / 914 230 925</span>
-      </div>
-    </header>
 
 
     <!-- Hero Content (Alineado a la izquierda y abajo) -->
@@ -72,11 +81,16 @@
       </p>
     </div>
   </section>
+  <script src="./js/nav.js"></script>
+
 
 
   <!-- CTA BANNER -->
   <div class="bg-brand-yellow py-8 px-6 lg:px-20 flex flex-col md:flex-row justify-between items-center">
-    <h3 class="text-brand-dark font-bold text-2xl mb-4 md:mb-0">Envíos a todo el Perú.</h3>
+    <h3 class="text-brand-dark font-bold text-2xl mb-4 md:mb-0">
+      <i class="fa-solid fa-truck-fast text-brand-dark mr-1"></i>
+      Envíos a todo el Perú.
+    </h3>
     <a href="https://wa.me/51978071214?text=Hola,%20deseo%20cotizar"
       class="bg-brand-dark text-white px-8 py-3 text-xs font-bold uppercase tracking-widest hover:bg-gray-800 transition">
       Cotizar ahora
@@ -85,9 +99,8 @@
   <!-- SECTORS OVERVIEW SECTION (VUE APP) -->
   <!-- Nota: Se envuelve todo en el div con id="app" para que Vue tome el control -->
   <section id="app" class="py-20 px-6 lg:px-20 max-w-7xl mx-auto bg-brand-dark">
-
     <!-- Cabecera de la sección (Añadido el filtro opcional) -->
-    <div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-4 gap-6 border-b border-gray-800 pb-4">
       <div>
         <h2 class="text-3xl font-bold mb-2 flex items-center gap-3 text-white">
           <span class="w-1.5 h-8 bg-brand-yellow block"></span> Nuestros Productos
@@ -119,13 +132,14 @@
 
       <!-- v-for recorre el arreglo computado y crea una tarjeta por cada producto -->
       <!-- El atributo :key es esencial para que Vue optimice el renderizado -->
-      <div v-for="producto in productosFiltrados" :key="producto.id" class="group cursor-pointer flex flex-col">
+      <div v-for="producto in productosFiltrados" :key="producto.id"
+        class="group  flex flex-col border-b border-gray-800 pb-4">
 
         <!-- Contenedor de la imagen -->
-        <div class="overflow-hidden mb-4 h-60 w-full bg-white rounded-md flex items-center justify-center ">
+        <div class=" overflow-hidden mb-4 h-60 w-full bg-white rounded-md flex items-center justify-center ">
           <!-- NOTA: Asumo que las imágenes están en la carpeta './img/products/' -->
           <!-- Si las imágenes no cargan, se mostrará el texto alternativo con el nombre del producto -->
-          <img :src="'./img/products/' + producto.id + '.jpeg'" :alt="producto.nombre"
+          <img :src="'./img/products/' + producto.id + '.jpeg'" :alt=" producto.nombre"
             class="w-full  object-contain group-hover:scale-105 transition duration-500">
         </div>
 

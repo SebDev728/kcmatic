@@ -32,36 +32,44 @@
       }
     }
   </script>
+
 </head>
 
 <body class="bg-brand-dark text-white font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
+  <header class="absolute w-full z-50 py-6 px-6 lg:px-12 ">
+    <div class="flex justify-between items-center">
+      <img class="flex gap-2 bg-white rounded justify-center h-14 w-60 shadow-sm" src="./img/assets/logo.jpg" alt="">
+      <nav class="hidden lg:flex items-center gap-7 font-medium text-sm">
+        <a class="hover:text-amber" href="./index.html">Inicio</a>
+        <a class="hover:text-amber" href="./nosotros.html">Nosotros</a>
+        <a class="hover:text-amber" href="./products.html">Productos</a>
+      </nav>
+      <div class="hidden md:flex  items-center gap-2 text-brand-yellow font-bold">
+        <i class="fa-solid fa-phone"></i>
+        <span>978 071 214 / 914 230 925</span>
+      </div>
+      <button id="mobileMenuBtn" class="lg:hidden p-2  hover:text-industrial-navy">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <!-- MOBILE NAV -->
+    <div id="mobileMenu" class="hidden bg-brand-blue lg:hidden border-b border-slate-200 px-6 py-4 space-y-3">
+      <a class="hover:text-amber block py-2 font-semibold" href="./index.html">Inicio</a>
+      <a class="hover:text-amber block py-2  font-semibold" href="./nosotros.html">Nosotros</a>
+      <a class="hover:text-amber block py-2  font-semibold" href="./products.html">Productos</a>
+    </div>
+  </header>
 
   <!-- HERO SECTION & HEADER -->
-  <section class="relative h-[55vh] md:h-[65vh] flex flex-col justify-between">
+  <section class="relative h-[55vh] md:h-[65vh] flex flex-col justify-between pt-40">
     <!-- Imagen de fondo con overlay oscuro -->
     <div class="absolute inset-0 z-0">
       <img src="./img/assets/banner.jpg" alt="Construction Workers" class="w-full h-full object-cover">
       <!-- Overlay para oscurecer la imagen y hacer visible el texto -->
       <div class="absolute inset-0 bg-black/60"></div>
     </div>
-
-    <header class="relative top-0 w-full z-50 py-6 px-6 lg:px-12 flex justify-between items-center">
-      <a href="./index.html" class="flex  gap-2  bg-white rounded justify-center h-14 w-60 shadow-sm">
-        <img src="./img/assets/logo.jpg" alt="">
-      </a>
-
-      <nav class="hidden lg:flex gap-8 text-sm font-medium text-white">
-        <a href="./index.html" class="hover:text-brand-yellow transition">Inicio</a>
-        <a href="./products.html" class="hover:text-brand-yellow transition">Productos</a>
-        <a href="./nosotros.html" class="hover:text-brand-yellow transition">Nosotros</a>
-      </nav>
-
-      <div class="flex items-center gap-2 text-brand-yellow font-bold">
-        <i class="fa-solid fa-phone"></i>
-        <span>978 071 214 / 914 230 925</span>
-      </div>
-    </header>
-
 
     <!-- Hero Content (Alineado a la izquierda y abajo) -->
     <div class="relative z-10 px-6 lg:px-20 pb-20 md:pb-32 max-w-7xl mx-auto w-full">
@@ -74,11 +82,13 @@
       </p>
     </div>
   </section>
+  <script src="./js/nav.js"></script>
+
 
   <!-- ABOUT US SECTION -->
-  <section class="py-20 px-6 lg:px-20 grid lg:grid-cols-2 gap-16 items-center border-b border-gray-800">
+  <section class="py-16 px-6 lg:px-20 grid lg:grid-cols-2 gap-16 items-center border-b border-gray-800">
     <div class="relative">
-      <img src="img/assets/pneumatic.jpg" alt="nosotros" class="w-full h-[500px] object-cover">
+      <img src="./img/assets/pneumatic.jpg" alt="Engineer" class="w-full object-cover">
       <!-- Decoración cuadrada -->
       <!-- <div class="absolute -bottom-6 -right-6 w-32 h-32 border-8 border-brand-yellow hidden lg:block"></div> -->
     </div>
@@ -87,13 +97,12 @@
       <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
         <span class="w-1 h-8 bg-brand-yellow"></span> Sobre Nosotros
       </h2>
-      <p class="text-gray-400 mb-4 leading-relaxed">
+      <p class="text-gray-400  leading-relaxed">
         Ubicados estratégicamente en el corazón del centro comercial
         industrial de Lima (Av. Argentina 523, C.C. Acoprom, Int. E14), en KCMATIC S.A.C. (KC Matic S.A.C.)
         proveemos
         soluciones integrales para automatización industrial, control de fluidos y control de movimiento.</p>
-      <p class="text-gray-400 mb-8 leading-relaxed">
-        Nos enfocamos en ser el aliado estratégico de ingenieros, jefes
+      <p class="text-gray-400  leading-relaxed">
         de mantenimiento y distribuidores, ofreciendo asesoría técnica personalizada y productos con
         certificaciones
         internacionales.
@@ -101,7 +110,7 @@
     </div>
   </section>
 
-  <section class="py-20 px-6 lg:px-20 max-w-7xl mx-auto  border-b border-gray-800">
+  <section class="py-16 px-6 lg:px-20 max-w-7xl mx-auto  border-b border-gray-800">
     <div class="flex justify-between items-end mb-10">
       <div>
         <h2 class="text-3xl font-bold mb-2 flex items-center gap-3">
@@ -154,6 +163,14 @@
     </div> -->
   </section>
 
+
+
+
+  <!-- Big Phone Number -->
+  <div class="text-center pt-20">
+    <p href="tel:+12345678900" class="text-4xl md:text-5xl font-bold text-brand-yellow hover:text-white transition">
+      Contáctanos</p>
+  </div>
 
   <!-- MAIN CONTENT (Info & Map) -->
   <section class="flex-grow w-full max-w-7xl mx-auto px-6 lg:px-20 py-16 md:py-20">
