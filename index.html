@@ -67,7 +67,8 @@
 
 <body class="bg-brand-dark text-white font-sans antialiased overflow-x-hidden">
   <!-- HEADER / NAVEGACIÓN -->
-  <header class="absolute top-0 w-full z-50 py-6 px-6 lg:px-12 ">
+
+  <header class="absolute top-0 w-full z-50 py-6 px-6 lg:px-12">
     <div class="flex justify-between items-center">
       <img class="flex gap-2 bg-white rounded justify-center h-14 w-60 shadow-sm" src="./img/assets/logo.jpg" alt="">
       <nav class="hidden lg:flex items-center gap-7 font-medium text-sm">
@@ -95,10 +96,10 @@
   <script src="./js/nav.js"></script>
 
   <!-- HERO SECTION -->
-  <section class="hero-bg h-screen flex items-center relative px-6 lg:px-20 pt-16">
+  <section class="hero-bg h-screen flex items-center relative px-6 lg:px-20 pt-20">
     <div class="max-w-2xl z-10">
       <p class="mb-4 text-xs font-semibold uppercase tracking-[.3em]">impulsamos tu Camino</p>
-      <h1 class=" text-5xl lg:text-7xl font-extrabold leading-tight mb-6">
+      <h1 class=" text-4xl lg:text-7xl font-extrabold leading-tight mb-6">
         Soluciones de control de<br>Movimiento & Neumática<span class="text-brand-yellow">.</span>
       </h1>
       <div class="flex gap-4 mt-8 flex-wrap">
@@ -196,76 +197,49 @@
 
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-  <!-- SECTORS OVERVIEW
-    SECTION (CARRUSEL INFINITO) -->
-  <section class="border-b border-gray-800  py-16 px-6 lg:px-20 max-w-7xl mx-auto bg-brand-dark overflow-hidden">
-    <!-- Cabecera -->
-    <div class="flex flex-wrap md:justify-between items-end mb-10">
-      <div>
-        <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
-          <span class="w-1.5 h-8 bg-brand-yellow block"></span> Nuestros Productos
-        </h2>
-        <p class="text-brand-text text-sm mt-2">Filtra por categoría para conocer el catálogo completo de productos
-          disponibles en KCMATIC S.A.C.</p>
-      </div>
-      <a href="./products.html"
-        class="py-4 text-brand-social text-xs font-bold uppercase tracking-widest hover:text-white transition text-brand-yellow">
-        Todos los Productos
-      </a>
-    </div>
 
-    <!-- Contenedor Relativo del Carrusel -->
-    <div class="relative w-full px-0 md:px-12">
-      <!-- px-12 en desktop para dejar espacio a las flechas -->
+  <!-- SECTORS OVERVIEW SECTION (CARRUSEL RESPONSIVO) -->
+  <section class="border-b border-gray-800 py-16 px-4 lg:px-20 max-w-7xl mx-auto bg-brand-dark overflow-hidden">
 
-      <!-- Swiper Container -->
+    <div class="relative w-full">
+      <!-- Añadido un padding bottom para que la sombra de la tarjeta no se corte -->
       <div class="swiper mySwiper !pb-8">
         <div id="app" class="swiper-wrapper">
-
-          <!-- Slide (Producto) -->
-          <div v-for="producto in productosFiltrados" :key="producto.id"
-            class="swiper-slide group flex flex-col h-full">
-            <!-- Imagen -->
-            <div class="overflow-hidden mb-4 h-48 w-full bg-white rounded-md flex items-center justify-center p-4">
+          <div v-for="producto in productosFiltrados" :key="producto.id" class="swiper-slide group cursor-pointer">
+            <div class="overflow-hidden mb-4 h-60 w-full bg-white rounded-md flex items-center justify-center">
               <img :src="'./img/products/' + producto.id + '.jpeg'" :alt="producto.nombre"
-                class="w-full h-full object-contain group-hover:scale-105 transition duration-500">
+                class="w-full object-contain group-hover:scale-105 transition duration-500">
             </div>
-
-            <!-- Info -->
-            <div class="flex flex-col flex-grow justify-between">
-              <div>
-                <span class="text-[10px] font-bold text-brand-yellow uppercase tracking-widest mb-1 block">{{
-                  producto.marca }}</span>
-                <h3 class="font-bold text-lg mb-2 text-white line-clamp-1" :title="producto.nombre">{{ producto.nombre
-                  }}</h3>
-                <ul class="text-brand-text text-xs mb-4 list-disc list-inside space-y-1">
-                  <li v-for="(valor, clave) in producto.especificaciones" :key="clave" class="line-clamp-1">
-                    <span class="capitalize text-gray-400">{{ clave }}:</span> {{ valor }}
-                  </li>
-                </ul>
-              </div>
-
-              <!-- Botón Cotizar -->
-              <a :href="'https://wa.me/51978071214?text=Hola,%20deseo%20cotizar' + ' ' + producto.nombre"
-                class="block w-full bg-brand-yellow text-center text-brand-dark px-4 py-3 font-bold text-xs uppercase tracking-wider hover:bg-white transition mt-auto">
-                Cotizar
-              </a>
-            </div>
+            <span class="text-[10px] font-bold text-brand-yellow uppercase tracking-widest mb-1">{{ producto.marca
+              }}</span>
+            <h3 class="font-bold text-lg mb-2 text-white line-clamp-1" :title="producto.nombre">{{ producto.nombre }}
+            </h3>
+            <ul class="text-brand-text text-xs mb-4 flex-grow list-disc list-inside space-y-1">
+              <li v-for="(valor, clave) in producto.especificaciones" :key="clave" class="line-clamp-1">
+                <span class="capitalize">{{ clave }}:</span> {{ valor }}
+              </li>
+            </ul>
+            <a :href="'https://wa.me/51978071214?text=Hola,%20deseo%20cotizar' + ' ' + producto.nombre"
+              class="block bg-brand-yellow text-center text-brand-dark px-8 py-3 font-bold text-xs uppercase tracking-wider hover:bg-white transition rounded-sm">
+              Cotizar
+            </a>
           </div>
-
         </div>
       </div>
 
-      <!-- Flechas de Navegación (Ocultas en móvil, visibles en desktop) -->
+      <!-- Flechas: Movidas hacia adentro en móvil (left-2 / right-2) para que no se salgan -->
       <button id="prevBtn"
-        class="hidden md:flex absolute top-1/2 -translate-y-1/2 left-0 z-10 w-10 h-10 rounded-full border border-white/20 bg-brand-dark text-white items-center justify-center hover:bg-brand-yellow hover:text-brand-dark hover:border-brand-yellow transition">
-        <i class="fa-solid fa-arrow-left"></i>
+        class="absolute top-1/2 -translate-y-1/2 left-2 md:-left-10 z-10 bg-brand-dark/80 backdrop-blur-sm text-white w-10 h-10 rounded-full flex items-center justify-center hover:text-brand-yellow hover:bg-brand-dark transition hidden md:flex">
+        <i class="fa-solid fa-chevron-left text-xl"></i>
       </button>
 
       <button id="nextBtn"
-        class="hidden md:flex absolute top-1/2 -translate-y-1/2 right-0 z-10 w-10 h-10 rounded-full border border-white/20 bg-brand-dark text-white items-center justify-center hover:bg-brand-yellow hover:text-brand-dark hover:border-brand-yellow transition">
-        <i class="fa-solid fa-arrow-right"></i>
+        class="absolute top-1/2 -translate-y-1/2 right-2 md:-right-10 z-10 bg-brand-dark/80 backdrop-blur-sm text-white w-10 h-10 rounded-full flex items-center justify-center hover:text-brand-yellow hover:bg-brand-dark transition hidden md:flex">
+        <i class="fa-solid fa-chevron-right text-xl"></i>
       </button>
+
+      <!-- NOTA: Añadí 'hidden md:flex' a los botones. En móvil es mejor deslizar que usar flechas. 
+           Si prefieres que se vean en móvil, quita 'hidden md:flex' y deja solo 'flex'. -->
     </div>
   </section>
 
@@ -275,33 +249,23 @@
   <!-- Inicialización de Swiper -->
   <script>
     var swiper = new Swiper(".mySwiper", {
-      slidesPerView: 60, // Cuántas tarjetas se ven a la vez (por defecto 1 en móviles)
-      spaceBetween: 24, // Espacio entre tarjetas (equivale a gap-6 en Tailwind)
-      loop: true,       // Hace que el carrusel sea infinito
-
-      // Configuración de las flechas personalizadas
+      slidesPerView: 1.2, // Móvil
+      spaceBetween: 16,
+      loop: true,
+      grabCursor: true,
+      // AÑADIR PUNTOS DE PAGINACIÓN EN MÓVIL
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
       navigation: {
         nextEl: "#nextBtn",
         prevEl: "#prevBtn",
       },
-
-      // Puntos de quiebre para responsividad
       breakpoints: {
-        // Cuando el ancho de pantalla es >= 640px (sm)
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 24,
-        },
-        // Cuando el ancho de pantalla es >= 768px (md)
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 24,
-        },
-        // Cuando el ancho de pantalla es >= 1024px (lg)
-        1024: {
-          slidesPerView: 4,
-          spaceBetween: 24,
-        },
+        640: { slidesPerView: 2, spaceBetween: 24 },
+        768: { slidesPerView: 3, spaceBetween: 24 },
+        1024: { slidesPerView: 4, spaceBetween: 24 },
       },
     });
   </script>
