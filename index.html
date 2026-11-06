@@ -61,6 +61,10 @@
     .animate-scroll:hover {
       animation-play-state: paused;
     }
+
+    [v-cloak] {
+      display: none;
+    }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
@@ -657,7 +661,8 @@
     </div>
   </section>
 
-  <div id="whatsapp-widget">
+
+  <div id="whatsapp-widget" v-cloak>
     <!-- 1. VENTANA DEL CHAT (MODAL) -->
     <!-- Se muestra/oculta con la clase 'hidden' controlada por Vue -->
     <div v-show="isOpen"
@@ -757,7 +762,6 @@
         const contactos = ref([
           {
             id: 1,
-            nombre: "Carlos Mendoza",
             rol: "Telefono 1",
             telefono: "51978071214", // Código de país + número (sin +)
             foto: "./img/logo.jpg"
@@ -765,7 +769,6 @@
           },
           {
             id: 2,
-            nombre: "Ana Gómez",
             rol: "Telefono 2",
             telefono: "51914230925",
             foto: "./img/logo.jpg"
@@ -793,6 +796,7 @@
         };
       }
     }).mount('#whatsapp-widget');
+
 
     createApp({
       setup() {
